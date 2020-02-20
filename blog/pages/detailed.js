@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import { Row, Col, Icon, Breadcrumb, Affix } from 'antd'
+import axios from 'axios'
 import Header from '../components/Header'
 import Author from '../components/Author'
 import Advert from '../components/Advert'
@@ -11,71 +12,38 @@ import ReactMarkdown from 'react-markdown'
 import MarkNav from 'markdown-navbar';
 import 'markdown-navbar/dist/navbar.css';
 
-const Detailed = () => {
+import Tocify from '../components/tocify.tsx'
 
-  let markdown = `
-  # blog
-  # admin
-  # service
+import marked from 'marked'
+import hljs from "highlight";
+import 'highlight.js/styles/monokai-sublime.css';
 
-  ### 有序、无序、任务列表
+import servicePath from '../config/apiUrl'
 
-  #### 无序列表
-  
-  - Java
-    - Spring
-      - IoC
-      - AOP
-  - Go
-    - gofmt
-    - Wide
-  - Node.js
-    - Koa
-    - Express
-  
-  #### 有序列表
-  
-  1. Node.js
-     1. Express
-     2. Koa
-  2. Go
-     1. gofmt
-     2. Wide
-  3. Java
-     1. Latke
-     2. IDEA
-  
-  #### 任务列表
-  
-  - [X] 发布 Sym
-  - [X] 发布 Solo
-  - [ ] 预约牙医
-  
-  ### 表格
-  
-  如果需要展示数据什么的，可以选择使用表格。
-  
-  | header 1 | header 2 |
-  | -------- | -------- |
-  | cell 1   | cell 2   |
-  | cell 3   | cell 4   |
-  | cell 5   | cell 6   |
-  
-  ### 隐藏细节
-  
-  <details>
-  <summary>这里是摘要部分。</summary>
-  这里是细节部分。
-  </details>
-  
-  ### 段落
-  
-  空行可以将内容进行分段，便于阅读。（这是第一段）
-  
-  使用空行在 Markdown 排版中相当重要。（这是第二段）
-  
+const Detailed = (props) => {
 
-  `
+  const tocify = new Tocify()
+  const renderer = new marked.Renderer();
+  renderer.heading = function (text, level, raw) {
+    const anchor = tocify.add(text, level);
+    return `<a id="${anchor}" href="#${anchor}" class="anchor-fix"><h${level}>${text}</h${level}></a>\n`;
+  };
+
+  marked.setOptions({
+    renderer: renderer,
+    gfm: true,
+    pedantic: false,
+    sanitize: false,
+    tables: true,
+    breaks: false,
+    smartLists: true,
+    smartypants: false,
+    highlight: function (code) {
+      return hljs.highlightAuto(code).value;
+    }
+  });
+
+  let html = marked(props.article_content);
 
   return (
     <>
@@ -91,53 +59,56 @@ const Detailed = () => {
             <div className="bread-div">
               <Breadcrumb>
                 <Breadcrumb.Item><a href="/">首页</a></Breadcrumb.Item>
-                <Breadcrumb.Item>项目列表</Breadcrumb.Item>
-                <Breadcrumb.Item>xxxx</Breadcrumb.Item>
+                <Breadcrumb.Item>{props.typeName}</Breadcrumb.Item>
+                <Breadcrumb.Item> {props.title}</Breadcrumb.Item>
               </Breadcrumb>
             </div>
 
             <div>
               <div className="detailed-title">
-                🚀React Hooks + Next.js + Egg.js + MySql + Ant Design 博客系统
-                  </div>
-
-              <div className="list-icon center">
-                <span><Icon type="calendar" /> 2019-12-12</span>
-                <span><Icon type="folder" /> 开源项目</span>
-                <span><Icon type="fire" /> 549人</span>
+                {props.title}
               </div>
-
-              <div className="detailed-content" >
-                <div className="detailed-content" >
-                  <ReactMarkdown
-                    source={markdown}
-                    escapeHtml={false}
-                  />
-                </div>
+              <div className="list-icon center">
+                <span><Icon type="calendar" /> {props.addTime}</span>
+                <span><Icon type="folder" /> {props.typeName}</span>
+                <span><Icon type="fire" /> {props.view_count}</span>
+              </div>
+              <div className="detailed-content" dangerouslySetInnerHTML={{ __html: html }}  >
               </div>
             </div>
           </div>
         </Col>
-
         <Col className="comm-right" xs={0} sm={0} md={7} lg={5} xl={4}>
           <Author />
           <Advert />
           <Affix offsetTop={5}>
             <div className="detailed-nav comm-box">
               <div className="nav-title">文章目录</div>
-              <MarkNav
-                className="article-menu"
-                source={markdown}
-                ordered={false}
-              />
+              <div className="toc-list">
+                {tocify && tocify.render()}
+              </div>
             </div>
           </Affix>
         </Col>
       </Row>
       <Footer />
-
     </>
   )
+}
+
+Detailed.getInitialProps = async (context) => {
+  // console.log(context.query.id)
+  let id = context.query.id
+  const promise = new Promise((resolve) => {
+
+    axios(servicePath.getArticleById + id).then(
+      (res) => {
+        resolve(res.data.data[0])
+      }
+    )
+  })
+
+  return await promise
 }
 
 export default Detailed
