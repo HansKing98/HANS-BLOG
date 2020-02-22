@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import marked from 'marked'
+import marked from 'marked'
 import '../static/css/AddArticle.css'
 import { Row, Col, Input, Select, Button, DatePicker, message, Spin } from 'antd'
 
@@ -22,8 +22,18 @@ function AddArticle(props) {
     const [partCount, setPartCount] = useState(0) //文章的集数
     const [isLoading, setIsLoadding] = useState(false) //是否显示加载
 
+    const changeContent = (e) => {
+        setArticleContent(e.target.value)
+        let html = marked(e.target.value)
+        setMarkdownContent(html)
+    }
 
- 
+    const changeIntroduce = (e) => {
+        setIntroducemd(e.target.value)
+        let html = marked(e.target.value)
+        setIntroducehtml(html)
+    }
+
     return (
         <div>
             <Row gutter={5}>
@@ -45,14 +55,18 @@ function AddArticle(props) {
                     <Row gutter={10} >
                         <Col span={12}>
                             <TextArea
+                                value={articleContent}
                                 className="markdown-content"
                                 rows={35}
+                                onChange={changeContent}
+                                onPressEnter={changeContent}
                                 placeholder="文章内容"
                             />
                         </Col>
                         <Col span={12}>
                             <div
-                                className="show-html">
+                                className="show-html"
+                                dangerouslySetInnerHTML={{ __html: markdownContent }} >
                             </div>
                         </Col>
                     </Row>
@@ -69,10 +83,16 @@ function AddArticle(props) {
                                 <br />
                                 <TextArea
                                     rows={4}
+                                    value={introducemd}
+                                    onChange={changeIntroduce}
+                                    onPressEnter={changeIntroduce}
                                     placeholder="文章简介"
                                 />
                                 <br /><br />
-                                <div className="introduce-html"></div>
+                                <div
+                                    className="introduce-html"
+                                    dangerouslySetInnerHTML={{ __html: '文章简介：' + introducehtml }} >
+                                </div>
                             </Col>
                             <Col span={12}>
                                 <div className="date-select">
