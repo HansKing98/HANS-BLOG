@@ -16,15 +16,14 @@ function AdminIndex(props) {
         setCollapsed(collapsed)
     };
 
-    const handleClickArticle = e=>{
+    const handleClickArticle = e => {
         console.log(e.item.props)
-        if(e.key=='addArticle'){
-          props.history.push('/index/add')
-        }else{
-          props.history.push('/index/list')
+        if (e.key == 'addArticle') {
+            props.history.push('/index/add')
+        } else {
+            props.history.push('/index/list')
         }
-    
-      }
+    }
 
     return (
         <Layout style={{ minHeight: '100vh' }}>
@@ -49,8 +48,8 @@ function AdminIndex(props) {
                             </span>
                         }
                     >
-                    <Menu.Item key="addArticle">添加文章</Menu.Item>
-                    <Menu.Item key="articleList">文章列表</Menu.Item>
+                        <Menu.Item key="addArticle">添加文章</Menu.Item>
+                        <Menu.Item key="articleList">文章列表</Menu.Item>
                     </SubMenu>
                     <SubMenu
                         key="sub2"
@@ -81,7 +80,7 @@ function AdminIndex(props) {
                         <div>
                             <Route path="/index/" exact component={AddArticle} />
                             <Route path="/index/add/" exact component={AddArticle} />
-                            <Route path="/index/add/:id"  exact component={AddArticle} />
+                            <Route path="/index/add/:id" exact component={AddArticle} />
                             <Route path="/index/list/" component={ArticleList} />
                         </div>
                     </div>
@@ -91,6 +90,5 @@ function AdminIndex(props) {
         </Layout>
     );
 }
-
 
 export default AdminIndex

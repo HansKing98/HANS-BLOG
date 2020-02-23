@@ -126,8 +126,35 @@ function AddArticle(props) {
         }
     }
 
+    const getArticleById = (id) => {
+        axios(servicePath.getArticleById + id, {
+            withCredentials: true,
+            header: { 'Access-Control-Allow-Origin': '*' }
+        }).then(
+            res => {
+                //let articleInfo= res.data.data[0]
+                setArticleTitle(res.data.data[0].title)
+                setArticleContent(res.data.data[0].article_content)
+                let html = marked(res.data.data[0].article_content)
+                setMarkdownContent(html)
+                setIntroducemd(res.data.data[0].introduce)
+                let tmpInt = marked(res.data.data[0].introduce)
+                setIntroducehtml(tmpInt)
+                setShowDate(res.data.data[0].addTime)
+                setSelectType(res.data.data[0].typeId)
+
+            }
+        )
+    }
+
     useEffect(() => {
         getTypeInfo()
+        //获得文章ID
+        let tmpId = props.match.params.id
+        if (tmpId) {
+            setArticleId(tmpId)
+            getArticleById(tmpId)
+        }
     }, [])
 
     return (
@@ -137,6 +164,7 @@ function AddArticle(props) {
                     <Row gutter={10} >
                         <Col span={20}>
                             <Input
+                                value={articleTitle}
                                 placeholder="博客标题"
                                 onChange={e => { setArticleTitle(e.target.value) }}
                                 size="large" />
@@ -187,6 +215,7 @@ function AddArticle(props) {
                                     value={introducemd}
                                     onChange={changeIntroduce}
                                     onPressEnter={changeIntroduce}
+                                    value={introducemd}
                                     placeholder="文章简介"
                                 />
                                 <br /><br />
