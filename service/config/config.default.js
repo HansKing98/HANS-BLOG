@@ -27,15 +27,15 @@ module.exports = appInfo => {
     // database configuration
     client: {
       // host
-      host: 'localhost',
+      host: '118.190.146.72',
       // port
       port: '3306',
       // username
-      user: 'root',
+      user: 'react_blog',
       // password
-      password: '12345678',
+      password: '63PkM7yR83TDtcMn',
       // database
-      database: 'react_blog',    
+      database: 'react_blog',
     },
     // load into app, default is open
     app: true,
@@ -43,15 +43,37 @@ module.exports = appInfo => {
     agent: false,
   };
 
+  // config.mysql = {
+  //   // database configuration
+  //   client: {
+  //     // host
+  //     host: 'localhost',
+  //     // port
+  //     port: '3306',
+  //     // username
+  //     user: 'root',
+  //     // password
+  //     password: '12345678',
+  //     // database
+  //     database: 'react_blog',    
+  //   },
+  //   // load into app, default is open
+  //   app: true,
+  //   // load into agent, default is close
+  //   agent: false,
+  // };
+
   config.security = {
     csrf: {
       enable: false,
-      domainWhiteList: [ '*' ]
-    }
+    },
+    domainWhiteList: [ '*' ]
   };
+
   config.cors = {
-    origin: 'http://127.0.0.1:3000',
-    credentials: true,  //允许Cook可以跨域
+    origin: '*',
+    // origin: 'http://hansking.cn:3000',
+    // credentials: true,  //允许Cook可以跨域
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'
   };
 

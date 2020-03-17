@@ -1,19 +1,40 @@
 .author-div {
     text-align: center;
-    padding: 1rem;
+    padding: 1rem !important;
+
 }
 
 .author-div div {
     margin-bottom: 1rem;
+
 }
 
 .author-introduction {
     font-size: .8rem;
     color: #999;
+
 }
 
 .account {
     background-color: #999;
-    margin-left: .5rem;
-    margin-right: .5rem;
+    margin-left: .5rem !important;
+    margin-right: .5rem !important;
+}
+
+.account:hover {
+    background-color: #ffffff;
+    color: #1890ff;
+}
+
+.author-name {
+    font-size: 1rem;
+    color: #1890ff;
+}
+
+.author-tag {
+    line-height: 27px;
+}
+
+.ant-avatar-image {
+    background: #ccc !important;
 }

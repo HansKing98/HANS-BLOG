@@ -1,43 +1,93 @@
-body {
-    background-color: #f6f6f6;
+body{
+  background-color: #f4f5f5;  
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
+  
+  height: auto;
 }
 
-.comm-left {
-    background-color: #FFF;
-    padding: .3rem;
-    border-radius: .3rem;
-    border: 1px solid #eee;
+/* @font-face {
+  font-family: 'iconfont'; 
+  src: url('//at.alicdn.com/t/font_1475468_z807vfbo35o.eot');
+  src: url('//at.alicdn.com/t/font_1475468_z807vfbo35o.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1475468_z807vfbo35o.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1475468_z807vfbo35o.woff') format('woff'),
+  --> url('//at.alicdn.com/t/font_1475468_z807vfbo35o.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1475468_z807vfbo35o.svg#iconfont') format('svg');
+} */
+
+@font-face {font-family:"iconfont"; src:url('https://at.alicdn.com/t/font_1475468_ljw2fmnkgom.ttf') format('truetype');}
+.my-icon{font-family:"iconfont" !important; font-size:60rpx; font-style:normal;}
+.icon-bilibili:before{content:"\e606";}
+.icon-github:before{content:"\e601";}
+.icon-wechat:before{content:"\e649";}
+.icon-qq:before{content:"\e641";}
+
+/* 多个图标添加多个 .your-icon-具体名称:before{content:"\对应编码";}即可
+ 此处的 e600 来自 项目内有阿里图标库指定, 见下图: */
+
+.comm-left{
+  background-color: #FFF;
+  padding:.3rem;
+  border-radius: .3rem;
+  border:1px solid #eee;
+  margin-bottom: 16px;
+}
+.comm-box{
+  background-color: #FFF;
+  margin-left: .5rem;
+  padding:.3rem;
+  border-radius: .3rem;
+  border:1px solid #eee;
+ 
+
+}
+.comm-main{
+  margin-top: .5rem !important;
+  max-width: 1100px;
+  margin:0 auto;
+ 
 }
 
-.comm-box {
-    background-color: #FFF;
-    margin-left: .5rem;
-    padding: .3rem;
-    border-radius: .3rem;
-    border: 1px solid #eee;
+.list-title{
+  font-size:1.4rem;
+  color: #1e90ff;
+  padding: 0 0.5rem;
+  margin-top: 1.3rem;
 }
-
-.comm-main {
-    margin-top: .5rem;
+.list-context{
+  color:#777;
+  padding:.5rem;
 }
-
-.list-title {
-    font-size: 1.3rem;
-    color: #1e90ff;
-    padding: 0 0.5rem;
+.list-icon{
+  padding:.5rem 0;
+  color:#ccc;
 }
-
-.list-context {
-    color: #777;
-    padding: .5rem;
+.list-icon span{
+  display: inline-block;
+  padding: 0 10px;
 }
-
-.list-icon {
-    padding: .5rem 0;
-    color: #AAA;
+.list-header{
+  font-size: 1.1rem;
+  padding-left:1rem;
 }
-
-.list-icon span {
-    display: inline-block;
-    padding: 0 10px;
+.list-go{
+  text-align: right;
+  margin-right: 20px;
+  color:#bbb;
+}
+.bbd-img{
+  border-radius: 4px;
+  width: 100%;
+}
+.bbd-title{
+  margin-top:10px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.bbd-zi{
+  color: #888;
+}
+.ant-card-body{
+  padding:10px;
 }

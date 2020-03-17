@@ -4,6 +4,7 @@ let servicePath = {
     getArticleList: ipUrl + 'getArticleList',   // 首页文章列表接口
     getArticleById: ipUrl + 'getArticleById/',  // 文章详细页内容接口 ,需要接收参数
     getTypeInfo: ipUrl + 'getTypeInfo', // 文章类别
-    getListById:ipUrl + 'getListById/',  // 根据类别ID获得文章列表
+    getListById: ipUrl + 'getListById/',  // 根据类别ID获得文章列表
+    getAllPartCount: ipUrl + 'getAllPartCount', // 获得访问数
 }
 export default servicePath;
