@@ -35,7 +35,7 @@ const Header = () => {
             <Row type="flex" justify="center">
                 <Col xs={24} sm={24} md={10} lg={15} xl={12}>
                     <span className="header-logo">HansKing</span>
-                    <span className="header-txt">web前端爱好者</span>
+                    <span className="header-txt">前端小白一枚</span>
                 </Col>
 
                 <Col className="memu-div" xs={0} sm={0} md={14} lg={8} xl={6}>

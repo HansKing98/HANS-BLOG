@@ -29,7 +29,7 @@ const Author = () => {
             <div> <Avatar size={100} src="http://q1.qlogo.cn/g?b=qq&nk=616882224&s=640" /></div>
             <div className="author-introduction">
                 <div className="author-name">hAnsKing</div>
-                <div>web前端爱好者，专注于WEB和移动前端开发。</div>
+                <div>前端小白一枚，来来一起学习。</div>
                 <div className="author-tag">
                     <Tag color="magenta">Coder</Tag>
                     <Tag color="green">大三</Tag>

@@ -19,7 +19,6 @@ const Home = (res) => {
   const [mylist, setMylist] = useState(res.list);
   const [topList, setTopList] = useState(res.topList);
   const [type, setType] = useState(res.type);
-  const [bibidaoList, setBibidaoList] = useState(res.bibidaoList);
   const [loading, setLoading] = useState(false)
   const renderer = new marked.Renderer();
 
@@ -90,44 +89,6 @@ const Home = (res) => {
               )}
             />
           </div>
-
-          <Row>
-            <Col xs={0} sm={0} md={24}>
-              <div className="comm-left">
-                <List
-                  header={
-                    <div className="bibidao-title">
-                      <div className="list-header left">视频博客</div>
-                      <div className="list-header right">
-                        <Link href={{ pathname: '/bibidao' }} >
-                          <a>更多 </a>
-                        </Link>
-                      </div>
-                    </div>
-                  }
-                  dataSource={bibidaoList}
-                  grid={{
-                    gutter: 10,
-                    sm: 0,
-                    md: 4,
-                  }}
-                  renderItem={item => (
-                    <List.Item>
-                      <a href={item.url} target="_blank">
-                        <img src={item.image} className="bbd-img" />
-                      </a>
-                      <div className="bbd-title">
-
-                        <a href={item.url} target="_blank">
-                          <span className="bbd-zi">{item.title} </span>
-                        </a>
-                      </div>
-                    </List.Item>
-                  )}
-                />
-              </div>
-            </Col>
-          </Row>
 
           <div className="comm-left">
             <List
