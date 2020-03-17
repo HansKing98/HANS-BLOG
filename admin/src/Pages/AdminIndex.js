@@ -95,7 +95,7 @@ function AdminIndex(props) {
             </div>
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>JSPang.com</Footer>
+        <Footer style={{ textAlign: "center" }}>Hansking.com</Footer>
       </Layout>
     </Layout>
   );
