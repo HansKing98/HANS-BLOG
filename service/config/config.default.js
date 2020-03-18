@@ -27,13 +27,13 @@ module.exports = appInfo => {
     // database configuration
     client: {
       // host
-      host: '118.190.146.72',
+      host: 'localhost',
       // port
       port: '3306',
       // username
-      user: 'react_blog',
+      user: 'root',
       // password
-      password: '63PkM7yR83TDtcMn',
+      password: '12345678',
       // database
       database: 'react_blog',
     },
@@ -42,26 +42,6 @@ module.exports = appInfo => {
     // load into agent, default is close
     agent: false,
   };
-
-  // config.mysql = {
-  //   // database configuration
-  //   client: {
-  //     // host
-  //     host: 'localhost',
-  //     // port
-  //     port: '3306',
-  //     // username
-  //     user: 'root',
-  //     // password
-  //     password: '12345678',
-  //     // database
-  //     database: 'react_blog',
-  //   },
-  //   // load into app, default is open
-  //   app: true,
-  //   // load into agent, default is close
-  //   agent: false,
-  // };
 
   config.security = {
     csrf: {

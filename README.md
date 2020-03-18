@@ -38,7 +38,7 @@ pm2 start 'npm start'
 
 ```bash
 # 项目启动（开发模式）
-yarn start
+npm start
 
 # 项目打包
 # 由于是个人后台管理页面放到其他位置以静态页面模式使用
@@ -89,4 +89,14 @@ domainWhiteList：用于设置白名单（多个）
 
 origin：设置跨域地址（只能一个）
 
-想要设置多个跨域地址，请注释掉origin字段，在白名单字段设置地址数组
+想要设置多个跨域地址，请注释掉 origin 字段，在白名单字段设置地址数组
+
+## react 打包后，项目部署完毕，刷新页面报错 404
+
+```javascript
+// 将 BrowserRouter
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+// 改为 HashRouter
+import { HashRouter as Router, Route } from "react-router-dom";
+```
