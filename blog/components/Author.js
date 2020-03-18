@@ -26,7 +26,7 @@ const Author = () => {
 
     return (
         <div className="author-div comm-box">
-            <div> <Avatar size={100} src="http://q1.qlogo.cn/g?b=qq&nk=616882224&s=640" /></div>
+            <div> <Avatar size={100} src="https://q1.qlogo.cn/g?b=qq&nk=616882224&s=640" /></div>
             <div className="author-introduction">
                 <div className="author-name">hAnsKing</div>
                 <div>前端小白一枚，来来一起学习。</div>
@@ -35,7 +35,7 @@ const Author = () => {
                     <Tag color="green">大三</Tag>
                     <Tag color="geekblue">天津科技大学</Tag>
                     <Tag color="blue">博客<CountUp end={all_part_count} />篇</Tag>
-                    <Tag color="cyan">访问<CountUp end={all_view_count} />次</Tag>
+                    <Tag color="cyan">访问<CountUp end={Math.floor(all_view_count*1.3)} />次</Tag>
                 </div>
 
                 <Divider>社交账号</Divider>

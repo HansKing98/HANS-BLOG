@@ -34,7 +34,11 @@ const Header = () => {
         <div className="header">
             <Row type="flex" justify="center">
                 <Col xs={24} sm={24} md={10} lg={15} xl={12}>
-                    <span className="header-logo">HansKing</span>
+                    <span className="header-logo" >
+                        <Link href={{pathname:'/'}}>
+                            <a> HansKing</a>
+                        </Link>
+                    </span>
                     <span className="header-txt">前端小白一枚</span>
                 </Col>
 
