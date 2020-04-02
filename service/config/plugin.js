@@ -10,8 +10,3 @@ exports.cors = {
   enable: true,
   package: 'egg-cors',
 };
-
-exports.origin = {
-  enable: true,
-  package: 'egg-origin',
-};
