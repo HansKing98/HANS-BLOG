@@ -1,4 +1,4 @@
-pre{
+/* pre{
     display: block;
     background-color: #283646 !important;
      padding: .5rem !important;
@@ -25,7 +25,7 @@ code {
     color:#4f4f4f;
     margin: 0px 3px;
 
-}
+} */
 
 .list-context img{
    width:100% ;

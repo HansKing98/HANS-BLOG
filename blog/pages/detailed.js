@@ -12,7 +12,8 @@ import 'markdown-navbar/dist/navbar.css';
 import axios from 'axios'
 import marked from 'marked'
 import hljs from "highlight.js";
-import 'highlight.js/styles/monokai-sublime.css';
+
+
 import Tocify from '../components/tocify.tsx'
 import servicePath from '../config/apiUrl'
 
@@ -171,5 +172,5 @@ Detailed.getInitialProps = async (context) => {
   })
   return await promise
 }
-
+import '../static/style/hljs-hans-dark.css'
 export default Detailed
